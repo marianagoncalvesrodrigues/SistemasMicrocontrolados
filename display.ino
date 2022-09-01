@@ -5,6 +5,7 @@ int val = 0; // variable to store the value read
 int conta=0; //
 int col;
 int lin;
+int pino = 2;
  
 byte displaySeteSeg[10][7] = { 
   
@@ -38,10 +39,11 @@ void loop() {
   analogWrite(ledPin, val/4);
   
   if(conta<10){
-    displaySeteSeg[col][lin];
+    digitalWrite(pino, displaySeteSeg[col][lin]);
     conta++;
     col++;
     lin++;
+    pino++;
   }else{
     conta=0;
   }
