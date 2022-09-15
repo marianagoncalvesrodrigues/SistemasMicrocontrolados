@@ -11,8 +11,8 @@ int Estado_segments, temp_uni, temp_dez, timer_contagem;
 void setup() {
   Serial.begin(9600); // setup serial
   pinMode(ledPin, OUTPUT);
-  pinMode(0, OUTPUT);
-  pinMode(1, OUTPUT);
+  pinMode(15, OUTPUT);
+  pinMode(14, OUTPUT);
   pinMode(2, OUTPUT);
   pinMode(3, OUTPUT);
   pinMode(4, OUTPUT);
@@ -59,8 +59,9 @@ void tic_display(){
     case 1:
       if(timer_segments ==0){
         timer_segments = 5;
-        digitalWrite(0,displaySeteSeg[temp_uni][1]);
-        digitalWrite(1,displaySeteSeg[temp_uni][0]);
+        digitalWrite(15,displaySeteSeg[temp_uni][1]);
+        digitalWrite(14,displaySeteSeg[temp_uni][0]);
+        //digitalWrite(1, LOW);
         digitalWrite(2,displaySeteSeg[temp_uni][5]);
         digitalWrite(3,displaySeteSeg[temp_uni][6]);
         digitalWrite(4,displaySeteSeg[temp_uni][3]);
@@ -75,8 +76,9 @@ void tic_display(){
     case 2:  
       if(timer_segments ==0){
         timer_segments = 5;
-        digitalWrite(0,displaySeteSeg[temp_dez][1]);
-        digitalWrite(1,displaySeteSeg[temp_dez][0]);
+        digitalWrite(15,displaySeteSeg[temp_dez][1]);
+        digitalWrite(14,displaySeteSeg[temp_dez][0]);
+        //digitalWrite(1, LOW);
         digitalWrite(2,displaySeteSeg[temp_dez][5]);
         digitalWrite(3,displaySeteSeg[temp_dez][6]);
         digitalWrite(4,displaySeteSeg[temp_dez][3]);
@@ -113,5 +115,3 @@ void loop() {
   tic_display();
   tic_contagem();
 } 
-
-
