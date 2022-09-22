@@ -14,6 +14,7 @@ int Estado_segments, temp_uni, temp_dez, timer_contagem;
 OneWire pinos(12);
 DallasTemperature barramento(&pinos);
 DeviceAddress sensor;
+int temperatura =0;
 /////////////////////////
  
 
@@ -106,21 +107,24 @@ void tic_display(){
 }
 
 void tic_contagem(){
-  barramento.requestTemperatures(); 
-  int temperatura = barramento.getTempC(sensor);
+  //barramento.requestTemperatures(); 
+  //int temperatura = barramento.getTempC(sensor);
   //val = analogRead(analogPin);
   //Serial.println(val/10.24); // debug value
   //int valor = val/10.24;
   //temp_uni++; 
   //temp_uni = valor%10; 
   temp_uni = temperatura%10;
-  Serial.println(temp_uni);
+  Serial.print(temp_uni);
   //temp_dez=valor/10;
   temp_dez=temperatura/10;
-  Serial.println(temp_dez);
+  Serial.print(temp_dez);
+  Serial.println(" ");
 }
 
 void loop() {
+  barramento.requestTemperatures(); 
+  temperatura = barramento.getTempC(sensor);
   base_tempo();
   tic_display();
   tic_contagem();
