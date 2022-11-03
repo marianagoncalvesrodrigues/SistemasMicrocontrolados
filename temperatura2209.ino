@@ -9,7 +9,9 @@ unsigned long myTime=0;
 unsigned long currentMillis, previousMillis; 
 unsigned long interval=1;
 unsigned long timer_segments;
-int Estado_segments, temp_uni, temp_dez, timer_contagem;
+int Estado_segments, temp_uni, temp_dez, timer_contagem, saida;
+int K = 25.5;
+int tempLimite = 40;
 /////////////////////////
 OneWire pinos(12);
 DallasTemperature barramento(&pinos);
@@ -125,6 +127,9 @@ void tic_contagem(){
 void loop() {
   barramento.requestTemperatures(); 
   temperatura = barramento.getTempC(sensor);
+  saida = K*(tempLimite - temperatura);
+  if(saida < 0)
+   saida = 0;
   base_tempo();
   tic_display();
   tic_contagem();
